@@ -22,12 +22,12 @@ PATCH / transactions/{id}
 DELETE /transactions/{id}
 ```
 
-El ingreso manual de datos mediante formulario se realiza a través de la API REST y su método `POST /transactions`
+El ingreso manual de datos mediante formulario se realiza a través de la API REST y su endpoint `POST /transactions`
 El ingreso de datos mediante scraping se realizaran mediante comandos si el sistema de scraping se encuentra en el mismo servidor o mediante la API REST si se encuantra en otro servidor, mediante `POST /transactions`.
 
 ### Servidor B
 
-Obtiene la información sobre transacciones a través del recurso `GET /transactions`. Para obtener un bulk de transacciones evitando repetir datos, se utiliza un parámetro `offset_date` para conocer la última transacción obtenida, y obtener a partir de la misma en la siguiente petición.
+Obtiene la información sobre transacciones a través del endpoint `GET /transactions`. Para obtener un bulk de transacciones evitando repetir datos, se utiliza un parámetro `offset_date` para conocer la última transacción obtenida, y obtener a partir de la misma en la siguiente petición.
 Cuando el servidor B obtiene los datos los almacena para su correspondiente proceso y verificación.
 
 Cuando los datos están verificados, se informa al servidor A del resultado mediante la petición `PUT /transactions/{id}` o `PATCH /transactions/{id}` actualizando su estado.
@@ -48,3 +48,8 @@ El recurso `/transaction-reports` ofrece el reporte por una transacción, dando 
 El recurso `/market-reports` ofrece un informe de mercado que englobe los datos que se consideren, y utiliza los parámetros `init-date` y `end-date` para marcar el rango de fechas sobre el que se quiere obtener el informe.
 
 En función de la naturaleza del informe, ambos tipos podrían depender de un mismo recurso, sin embargo, sin más conocimiento del contexto del problema, se ha preferido separarlos en recursos diferentes para esta solución.
+
+
+### Aclaraciones
+
+Los endpoints propuestos inicialmente `GET /transactions/{id}` y `DELETE /transactions/{id}` no se utilizan para los requisitos del problema, pero un sistema de estas características en entorno real muy probablemente los necesitaría.
