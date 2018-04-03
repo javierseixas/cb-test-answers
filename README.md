@@ -50,6 +50,11 @@ El recurso `/market-reports` ofrece un informe de mercado que englobe los datos 
 En función de la naturaleza del informe, ambos tipos podrían depender de un mismo recurso, sin embargo, sin más conocimiento del contexto del problema, se ha preferido separarlos en recursos diferentes para esta solución.
 
 
+### Diagrama
+
+![Diagrama servidores](https://github.com/javierseixas/cb-test-answers/blob/master/doc/transaction-servers.png)
+
+
 ### Aclaraciones
 
 Los endpoints propuestos inicialmente `GET /transactions/{id}` y `DELETE /transactions/{id}` no se utilizan para los requisitos del problema, pero un sistema de estas características en entorno real muy probablemente los necesitaría.
